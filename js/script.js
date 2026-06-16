@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('mavi_sepet', JSON.stringify(sepet));
 
             sepetGuncelle();
-            alert(isim + " sepete eklendi!");
+            maviUyari(isim + " sepete eklendi!", "basarili");
         });
     });
 
@@ -43,6 +43,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 });
+
+function maviUyari(mesaj, tip = 'normal') {
+    let container = document.getElementById('mavi-toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'mavi-toast-container';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `mavi-toast ${tip}`;
+    
+    let ikon = '';
+    if(tip === 'basarili') ikon = `<svg style="width:22px;height:22px;fill:#28a745" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>`;
+    else if(tip === 'hata') ikon = `<svg style="width:22px;height:22px;fill:#cc0000" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>`;
+    else ikon = `<svg style="width:22px;height:22px;fill:#0033a0" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`;
+
+    toast.innerHTML = `<div style="display:flex;align-items:center;gap:10px;">${ikon}<span style="line-height:1.4;">${mesaj}</span></div>`;
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add('goster'), 10);
+    setTimeout(() => {
+        toast.classList.remove('goster');
+        setTimeout(() => toast.remove(), 400);
+    }, 3000);
+}
 
 function urunAra() {
     const aramaKutusu = document.getElementById('aramaInput');
@@ -107,9 +133,9 @@ function odemeSayfasiniDoldur() {
     if(form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Ödemeniz başarıyla alındı! Siparişiniz hazırlanıyor.');
+            maviUyari('Ödemeniz başarıyla alındı! Siparişiniz hazırlanıyor.', 'basarili');
             localStorage.removeItem('mavi_sepet');
-            window.location.href = "index.html";
+            setTimeout(() => { window.location.href = "index.html"; }, 2500);
         });
     }
 }
@@ -124,7 +150,7 @@ function sepetiOnayla() {
     if(JSON.parse(localStorage.getItem('mavi_sepet')||"[]").length > 0) {
         window.location.href = "odeme.html";
     } else {
-        alert("Sipariş verebilmek için sepetinize ürün ekleyin."); 
+        maviUyari("Sipariş verebilmek için sepetinize ürün ekleyin.", "hata"); 
     }
 }
 
@@ -139,7 +165,8 @@ function kullaniciKontrol() {
     if(aktif && link) {
         link.innerText = "Hoş Geldin, " + aktif;
         link.href = "#";
-        link.onclick = () => { 
+        link.onclick = (e) => { 
+            e.preventDefault();
             if(confirm("Çıkış yapmak istiyor musunuz?")) { 
                 localStorage.removeItem('mavi_aktif_kullanici'); 
                 window.location.reload(); 

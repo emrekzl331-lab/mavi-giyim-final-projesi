@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sepetGuncelle();
     kullaniciKontrol();
 
-    // Sepete Ekleme
     const sepeteEkleButonlari = document.querySelectorAll('.sepete-ekle-btn');
     sepeteEkleButonlari.forEach(buton => {
         buton.addEventListener('click', (e) => {
@@ -19,11 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Sepet ve Ödeme Sayfaları
     if (window.location.pathname.includes('sepetim.html')) sepetSayfasiniDoldur();
     if (window.location.pathname.includes('odeme.html')) odemeSayfasiniDoldur();
 
-    // Arama ve Filtreleme
     const urlParams = new URLSearchParams(window.location.search);
     const aranan = urlParams.get('ara');
     const kategori = urlParams.get('kategori');
@@ -71,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function urunAra() {
     const kelime = document.getElementById('aramaInput').value;
-    if (window.location.pathname.includes('urunler.html')) {
+    if (window.location.pathname.includes('ürünler.html')) {
         document.getElementById('fiyat-araligi').dispatchEvent(new Event('input'));
     } else {
-        window.location.href = 'urunler.html?ara=' + kelime;
+        window.location.href = 'ürünler.html?ara=' + kelime;
     }
 }
 
@@ -92,7 +89,7 @@ function sepetSayfasiniDoldur() {
     icerik.innerHTML = '';
 
     if (sepet.length === 0) {
-        icerik.innerHTML = '<p style="color: #666;">Sepetinizde urun bulunmamaktadır.</p>';
+        icerik.innerHTML = '<p style="color: #666;">Sepetinizde ürün bulunmamaktadır.</p>';
     } else {
         sepet.forEach((u) => {
             toplam += u.fiyat;
@@ -110,8 +107,8 @@ function odemeSayfasiniDoldur() {
     ozet.innerHTML = '';
 
     if (sepet.length === 0) {
-        ozet.innerHTML = '<p>Sepetiniz boş. Lütfen urun ekleyin.</p>';
-        setTimeout(() => window.location.href = "urunler.html", 2000);
+        ozet.innerHTML = '<p>Sepetiniz boş. Lütfen ürün ekleyin.</p>';
+        setTimeout(() => window.location.href = "ürünler.html", 2000);
     } else {
         sepet.forEach((urun) => {
             toplam += urun.fiyat;
@@ -141,7 +138,7 @@ function sepetiOnayla() {
     if(JSON.parse(localStorage.getItem('mavi_sepet')||"[]").length > 0) {
         window.location.href = "odeme.html";
     } else {
-        alert("Sipariş verebilmek için sepetinize urun ekleyin."); 
+        alert("Sipariş verebilmek için sepetinize ürün ekleyin."); 
     }
 }
 

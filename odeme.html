@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ödeme - Mavi Giyim</title>
+    <link rel="icon" href="https://www.mavi.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ust-uyari" style="background-color: #cc0000;">Bu site Web Tasarım dersi kapsamında yapılmıştır ve geçerliliği yoktur.</div>
+    <header>
+        <a href="index.html" class="logo">MAVİ</a>
+        <div class="arama-kapsayici"><input type="text" id="aramaInput" placeholder="Ürün ara..."><button onclick="urunAra()">Ara</button></div>
+<nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <div class="dropdown">
+                <a href="urunler.html">Koleksiyon ▾</a>
+                <div class="dropdown-icerik">
+                    <a href="urunler.html?kategori=kadin">Kadın</a>
+                    <a href="urunler.html?kategori=erkek">Erkek</a>
+                    <a href="urunler.html?kategori=cocuk">Çocuk</a>
+                    <a href="urunler.html?kategori=aksesuar">Aksesuar</a>
+                    <a href="urunler.html?kategori=ayakkabi">Ayakkabı</a>
+                </div>
+            </div>
+            <a href="iletisim.html">İletişim</a>
+            <a href="giris-yap.html" id="kullanici-link">Giriş Yap</a>
+            <div class="sepet-dropdown-kapsayici">
+                <a href="sepetim.html" id="sepet-link">Sepetim (0)</a>
+                <div class="sepet-ozet-pencere" id="sepetHoverPencerem"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1000px; margin: 40px auto; display: flex; gap: 40px;">
+        <div style="flex: 2; background: white; padding: 30px; border-radius: 4px; border: 1px solid #eee;">
+            <h2 style="color: #0033a0; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Ödeme Bilgileri</h2>
+            <form id="odemeFormu">
+                <input type="text" placeholder="Ad Soyad" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc;">
+                <textarea placeholder="Açık Adres" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; height: 80px;"></textarea>
+                <input type="text" placeholder="Kart Numarası" maxlength="16" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc;">
+                <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <input type="text" placeholder="AA/YY" maxlength="5" required style="flex: 1; padding: 12px; border: 1px solid #ccc;">
+                    <input type="text" placeholder="CVV" maxlength="3" required style="flex: 1; padding: 12px; border: 1px solid #ccc;">
+                </div>
+                <button type="submit" style="width: 100%; padding: 15px; background: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 16px;">Siparişi Tamamla</button>
+            </form>
+        </div>
+        <div style="flex: 1; background: #f9fbff; padding: 30px; border-radius: 4px; border: 1px solid #e0e8f5; height: fit-content;">
+            <h2 style="color: #0033a0; margin-bottom: 20px;">Sipariş Özeti</h2>
+            <div id="odeme-siparis-ozeti" style="margin-bottom: 20px;"></div>
+            <h3 style="color: #cc0000; font-size: 24px;">Toplam: <span id="odeme-toplam">0</span> TL</h3>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>

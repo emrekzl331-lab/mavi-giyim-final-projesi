@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <style>
+    body {
+        background: url('https://images.unsplash.com/photo-1542272604-787c3835535d?w=1600&q=80') no-repeat center center fixed !important;
+        background-size: cover !important;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    .uyelik-ana-kapsayici {
+        max-width: 900px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.96) !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3) !important;
+        border-radius: 8px !important;
+        display: flex;
+        gap: 50px;
+        padding: 50px;
+    }
+    .uyelik-kolon { flex: 1; }
+    .sol-kolon { border-right: 1px solid #eee; padding-right: 50px; }
+    label { font-weight: bold; color: #333; display: block; margin-bottom: 5px; font-size: 14px; }
+</style>
+    <meta charset="UTF-8">
+    <title>Hesabım - Mavi Giyim</title>
+    <link rel="icon" href="https://www.mavi.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ust-uyari" style="background-color: #cc0000; color: white;">Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.</div>
+
+    <div class="uyelik-ana-kapsayici">
+        <div class="uyelik-kolon sol-kolon">
+            <h2 style="color: #0033a0; margin-bottom: 30px; font-weight: 900; text-transform: uppercase;">Giriş Yap</h2>
+            <form id="girisFormu">
+                <label>E-posta</label>
+                <input type="email" required style="width: 100%; margin-bottom: 15px;">
+                <label>Şifre</label>
+                <input type="password" required style="width: 100%; margin-bottom: 25px;">
+                <button type="submit" class="uyelik-btn">Giriş Yap</button>
+            </form>
+        </div>
+
+        <div class="uyelik-kolon">
+            <h2 style="color: #0033a0; margin-bottom: 30px; font-weight: 900; text-transform: uppercase;">Aramıza Katıl</h2>
+            <form id="kayitFormu">
+                <label>Ad Soyad</label>
+                <input type="text" id="kayitIsim" required style="width: 100%; margin-bottom: 15px;">
+                <label>E-posta</label>
+                <input type="email" id="kayitEmail" required style="width: 100%; margin-bottom: 15px;">
+                <label>Şifre</label>
+                <input type="password" id="kayitSifre" required style="width: 100%; margin-bottom: 25px;">
+                <button type="submit" class="uyelik-btn" style="background-color: #222;">Üye Ol</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('girisFormu').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const kayitliIsim = localStorage.getItem('mavi_uyelik_isim') || "Değerli Müşterimiz";
+            localStorage.setItem('mavi_aktif_kullanici', kayitliIsim);
+            window.location.href = "index.html";
+        });
+
+        document.getElementById('kayitFormu').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const isim = document.getElementById('kayitIsim').value;
+            localStorage.setItem('mavi_uyelik_isim', isim);
+            alert("Kayıt başarılı! Şimdi sol taraftan giriş yapabilirsiniz.");
+            document.getElementById('kayitFormu').reset();
+        });
+    </script>
+</body>
+</html>

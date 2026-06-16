@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim - Mavi Giyim</title>
+    <link rel="icon" href="https://www.mavi.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ust-uyari" style="background-color: #cc0000; color: white;">Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.</div>
+
+    <header>
+        <a href="index.html" class="logo">MAVİ GİYİM</a>
+<nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <div class="dropdown">
+                <a href="urunler.html">Koleksiyon ▾</a>
+                <div class="dropdown-icerik">
+                    <a href="urunler.html?kategori=kadin">Kadın</a>
+                    <a href="urunler.html?kategori=erkek">Erkek</a>
+                    <a href="urunler.html?kategori=cocuk">Çocuk</a>
+                    <a href="urunler.html?kategori=aksesuar">Aksesuar</a>
+                    <a href="urunler.html?kategori=ayakkabi">Ayakkabı</a>
+                </div>
+            </div>
+            <a href="iletisim.html">İletişim</a>
+            <a href="giris-yap.html" id="kullanici-link">Giriş Yap</a>
+            <div class="sepet-dropdown-kapsayici">
+                <a href="sepetim.html" id="sepet-link">Sepetim (0)</a>
+                <div class="sepet-ozet-pencere" id="sepetHoverPencerem"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1000px; margin: 40px auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <h1 style="color:#0033a0; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 30px; font-size: 32px;">Alışveriş Sepetim</h1>
+        
+        <div id="sepet-icerik" style="min-height: 150px;"></div>
+        
+        <div style="background: #f9fbff; padding: 25px; border-radius: 8px; margin-top: 30px; border: 1px solid #e0e8f5; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="color:#0033a0; margin: 0;">Genel Toplam:</h2>
+            <h2 style="color:#cc0000; margin: 0; font-size: 32px;"><span id="toplam-tutar">0</span> TL</h2>
+        </div>
+        
+        <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px;">
+            <button onclick="sepetiTemizle()" style="padding: 15px 30px; background: #fff; color: #cc0000; border: 2px solid #cc0000; font-weight: 800; cursor: pointer; border-radius: 4px; transition: 0.3s;" onmouseover="this.style.background='#cc0000'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#cc0000'">Sepeti Boşalt</button>
+            <button onclick="sepetiOnayla()" style="padding: 15px 40px; background: #0033a0; color: white; border: none; font-weight: 800; cursor: pointer; border-radius: 4px; transition: 0.3s; font-size: 16px;" onmouseover="this.style.background='#001f66'" onmouseout="this.style.background='#0033a0'">Güvenli Ödeme Adımına Geç &rarr;</button>
+        </div>
+    </main>
+
+    <footer class="kapsamli-footer" style="margin-top: 60px;">
+        <p style="text-align: center; color: white;">&copy; 2026 Mavi Giyim. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

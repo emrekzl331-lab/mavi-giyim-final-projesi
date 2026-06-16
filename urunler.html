@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Koleksiyon - Mavi Giyim</title>
+    <link rel="icon" href="https://www.mavi.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ust-uyari" style="background-color: #cc0000; color: white;">Bu site Web Tasarım dersi kapsamında yapılmıştır ve sitedeki bilgilerin geçerliliği yoktur.</div>
+    
+    <header>
+        <a href="index.html" class="logo">MAVİ</a>
+        <div class="arama-kapsayici"><input type="text" id="aramaInput" placeholder="Ürün ara..."><button onclick="urunAra()">Ara</button></div>
+<nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <div class="dropdown">
+                <a href="urunler.html">Koleksiyon ▾</a>
+                <div class="dropdown-icerik">
+                    <a href="urunler.html?kategori=kadin">Kadın</a>
+                    <a href="urunler.html?kategori=erkek">Erkek</a>
+                    <a href="urunler.html?kategori=cocuk">Çocuk</a>
+                    <a href="urunler.html?kategori=aksesuar">Aksesuar</a>
+                    <a href="urunler.html?kategori=ayakkabi">Ayakkabı</a>
+                </div>
+            </div>
+            <a href="iletisim.html">İletişim</a>
+            <a href="giris-yap.html" id="kullanici-link">Giriş Yap</a>
+            <div class="sepet-dropdown-kapsayici">
+                <a href="sepetim.html" id="sepet-link">Sepetim (0)</a>
+                <div class="sepet-ozet-pencere" id="sepetHoverPencerem"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1400px; width: 95%;">
+        <div class="urunler-kapsayici">
+            <aside class="filtre-alani modern-filtre">
+                <div class="filtre-baslik">Filtreler</div>
+                
+                <div class="filtre-grubu accordion">
+                    <h4 class="accordion-baslik">Sıralama <span class="arti">+</span></h4>
+                    <div class="accordion-icerik" style="display: none;">
+                        <select id="sirala-select" class="modern-select">
+                            <option value="yeni">Yeni Gelenler</option>
+                            <option value="artan">Fiyat: Artan</option>
+                            <option value="azalan">Fiyat: Azalan</option>
+                            <option value="a-z">A'dan Z'ye</option>
+                            <option value="z-a">Z'den A'ya</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filtre-grubu accordion">
+                    <h4 class="accordion-baslik">Cinsiyet <span class="arti">+</span></h4>
+                    <div class="accordion-icerik" style="display: none;">
+                        <label class="custom-cb"><input type="checkbox" class="filtre-cb" data-tip="kategori" value="kadin"><span class="checkmark"></span> Kadın</label>
+                        <label class="custom-cb"><input type="checkbox" class="filtre-cb" data-tip="kategori" value="erkek"><span class="checkmark"></span> Erkek</label>
+                        <label class="custom-cb"><input type="checkbox" class="filtre-cb" data-tip="kategori" value="cocuk"><span class="checkmark"></span> Çocuk</label>
+                    </div>
+                </div>
+
+                <div class="filtre-grubu accordion">
+                    <h4 class="accordion-baslik">Ürün Tipi <span class="arti">+</span></h4>
+                    <div class="accordion-icerik" style="display: none;">
+                        <label class="custom-cb"><input type="checkbox" class="filtre-cb" data-tip="kategori" value="aksesuar"><span class="checkmark"></span> Aksesuar</label>
+                        <label class="custom-cb"><input type="checkbox" class="filtre-cb" data-tip="kategori" value="ayakkabi"><span class="checkmark"></span> Ayakkabı</label>
+                    </div>
+                </div>
+
+                <div class="filtre-grubu accordion" style="border-bottom: none;">
+                    <div style="padding: 15px 20px 20px 20px; text-align: center; background: #fdfdfd; border-top: 1px solid #eaeaea;">
+                        <button id="filtreleri-temizle-btn" style="width: 100%; padding: 12px; background: #fff; color: #cc0000; border: 2px solid #cc0000; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px;" onmouseover="this.style.background='#cc0000'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#cc0000'">
+                            Filtreleri Temizle
+                        </button>
+                    </div>
+                    <h4 class="accordion-baslik">Fiyat Aralığı <span class="arti">+</span></h4>
+                    <div class="accordion-icerik" style="display: none;">
+                        <div class="fiyat-slider-kutu">
+                            <div class="fiyat-girisleri">
+                                <input type="number" id="fiyat-min-input" value="0" min="0" max="3000">
+                                <span> - </span>
+                                <input type="number" id="fiyat-max-input" value="3000" min="0" max="3000">
+                            </div>
+                            <div class="cift-slider-kapsayici">
+                                <div class="slider-track-renk" id="slider-track-renk"></div>
+                                <input type="range" id="fiyat-min-range" min="0" max="3000" value="0" step="50">
+                                <input type="range" id="fiyat-araligi" min="0" max="3000" value="3000" step="50"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <section class="urun-listesi-alani">
+                <div class="urun-grid">
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="1299"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/37864/uploads/urunresimleri/buyuk/crystal-kadin-ispanyol-paca-yuksek-bel-5714-1.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>İspanyol Paça Jean</h3><p class="fiyat">1299 TL</p><button class="sepete-ekle-btn" data-id="1" data-isim="Kadın İspanyol Jean" data-fiyat="1299">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="499"><span class="yeni-etiket">YENİ</span><img src="https://farktorcdn.com/Library/Upl/5500186/Product/3218201R-4051KBEY-3055.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Beyaz V Yaka Tişört</h3><p class="fiyat">499 TL</p><button class="sepete-ekle-btn" data-id="3" data-isim="Kadın Tişört" data-fiyat="499">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="799"><span class="yeni-etiket">YENİ</span><img src="https://cdn.lutvelizade.io/gorseller/gomlek-00111-mavi-kadin-gomlek.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Çizgili Gömlek</h3><p class="fiyat">799 TL</p><button class="sepete-ekle-btn" data-id="7" data-isim="Kadın Gömlek" data-fiyat="799">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="949"><span class="yeni-etiket">YENİ</span><img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/bw/h/27/1afb43a0-63a4-44d4-9f44-fe2be15c057f.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Düğmeli Hırka</h3><p class="fiyat">949 TL</p><button class="sepete-ekle-btn" data-id="9" data-isim="Kadın Hırka" data-fiyat="949">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="1899"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/mnresize/400/-/ty1797/prod/QC_PREP/20251212/13/ecd555d7-4638-3a4b-b50e-3dcbf20af68d/1_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>İkonik Denim Ceket</h3><p class="fiyat">1899 TL</p><button class="sepete-ekle-btn" data-id="12" data-isim="Erkek Ceket" data-fiyat="1899">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="899"><span class="yeni-etiket">YENİ</span><img src="https://cdn.aksesuarix.com/UserFiles/Fotograflar/106137-iced-blue-baggy-denim-urban-jort-erkek-sort-uk1449mva-uk1449mva-01.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Denim Şort</h3><p class="fiyat">899 TL</p><button class="sepete-ekle-btn" data-id="15" data-isim="Erkek Şort" data-fiyat="899">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="849"><span class="yeni-etiket">YENİ</span><img src="https://cdn.tozlu.com/img/640/85/erkek-bisiklet-yaka-orme-triko-kazak-1de75-1649531_0129.webp" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Bisiklet Yaka Kazak</h3><p class="fiyat">849 TL</p><button class="sepete-ekle-btn" data-id="17" data-isim="Erkek Kazak" data-fiyat="849">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="699"><span class="yeni-etiket">YENİ</span><img src="https://img.ltwebstatic.com/v4/j/pi/2025/10/08/18/175991254387997cc0dfec0ca0d755a1aec7ea9880_thumbnail_750x999.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Esnek Bel Jean</h3><p class="fiyat">699 TL</p><button class="sepete-ekle-btn" data-id="21" data-isim="Çocuk Jean" data-fiyat="699">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="299"><span class="yeni-etiket">YENİ</span><img src="https://sporight.com/erkek-cocuk-fuel-the-fire-baskili-tisort-6610459-70057-ekru-t-shirt-mavi-5995573-65-O.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Baskılı Tişört</h3><p class="fiyat">299 TL</p><button class="sepete-ekle-btn" data-id="22" data-isim="Çocuk Tişört" data-fiyat="299">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="849"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/mnresize/420/620/ty1823/prod/QC_PREP/20260205/03/175521e5-d23c-3e45-ac7b-052f67d57c69/1_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Denim Salopet</h3><p class="fiyat">849 TL</p><button class="sepete-ekle-btn" data-id="23" data-isim="Çocuk Salopet" data-fiyat="849">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="649"><span class="yeni-etiket">YENİ</span><img src="https://iis-akakce.akamaized.net/p.x?https%3A%2F%2Fproductimages%2Ehepsiburada%2Enet%2Fs%2F777%2F600%2F110000957084273%2Ejpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Jile Elbise</h3><p class="fiyat">649 TL</p><button class="sepete-ekle-btn" data-id="26" data-isim="Çocuk Elbise" data-fiyat="649">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="599"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/mnresize/420/620/ty1591/prod/QC/20241022/19/c4d2d512-57fe-3110-bf0e-33388232c2a7/1_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Eşofman Takımı</h3><p class="fiyat">599 TL</p><button class="sepete-ekle-btn" data-id="28" data-isim="Çocuk Eşofman" data-fiyat="599">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="349"><span class="yeni-etiket">YENİ</span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsy5HND4WB6QStdkW2jVYcq-SfjBcydX-cvA&s" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Beyaz Şapka</h3><p class="fiyat">349 TL</p><button class="sepete-ekle-btn" data-id="32" data-isim="Beyaz Şapka" data-fiyat="349">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="449"><span class="yeni-etiket">YENİ</span><img src="https://cdn.deriza.com/product/images/deriza-144021-siyah-spor-erkek-kot-deri-kemer-1.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Deri Kemer</h3><p class="fiyat">449 TL</p><button class="sepete-ekle-btn" data-id="33" data-isim="Deri Kemer" data-fiyat="449">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="199"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/42555/uploads/urunresimleri/buyuk/6li-unisex-pamuklu-duz-siyah-tenis-cor--4d65-.png" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Çorap Seti</h3><p class="fiyat">199 TL</p><button class="sepete-ekle-btn" data-id="37" data-isim="Çorap Seti" data-fiyat="199">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="149"><span class="yeni-etiket">YENİ</span><img src="https://n11scdn.akamaized.net/a1/375_535/11/09/98/57/IMG-8680554982944192032.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Bez Çanta</h3><p class="fiyat">149 TL</p><button class="sepete-ekle-btn" data-id="40" data-isim="Bez Çanta" data-fiyat="149">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="1599"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/52357/uploads/urunresimleri/buyuk/unisex-spor-sneaker-ayakkabi-beyaz-bey-02e35b.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Beyaz Sneaker</h3><p class="fiyat">1599 TL</p><button class="sepete-ekle-btn" data-id="46" data-isim="Beyaz Sneaker" data-fiyat="1599">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="2999"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=1200,quality=85,format=webp/63078/uploads/urunresimleri/buyuk/tattini-unisex-hakiki-deri-black-sm-bi-3a28ff.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Deri Çizme</h3><p class="fiyat">2999 TL</p><button class="sepete-ekle-btn" data-id="49" data-isim="Deri Çizme" data-fiyat="2999">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="999"><span class="yeni-etiket">YENİ</span><img src="https://n11scdn.akamaized.net/a1/375_535/14/24/07/68/IMG-1324917585241953666.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Bez Sneaker</h3><p class="fiyat">999 TL</p><button class="sepete-ekle-btn" data-id="50" data-isim="Bez Sneaker" data-fiyat="999">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="399"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/ty659/product/media/images/20221222/23/244488682/68282630/6/6_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Basic Tişört</h3><p class="fiyat">399 TL</p><button class="sepete-ekle-btn" data-id="51" data-isim="Kadın Basic Tişört" data-fiyat="399">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="449"><span class="yeni-etiket">YENİ</span><img src="https://productimages.hepsiburada.net/s/381/375-375/110000400364109.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Crop Top Bluz</h3><p class="fiyat">449 TL</p><button class="sepete-ekle-btn" data-id="53" data-isim="Kadın Crop Top" data-fiyat="449">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="749"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/mnresize/420/620/ty1443/product/media/images/prod/QC/20240727/13/45c45bf2-961d-3fdf-975b-7706486f7963/1_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Desenli Kimono</h3><p class="fiyat">749 TL</p><button class="sepete-ekle-btn" data-id="57" data-isim="Kadın Kimono" data-fiyat="749">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="999"><span class="yeni-etiket">YENİ</span><img src="https://cdn.dsmcdn.com/ty1719/prod/QC_PREP/20250805/14/4877061c-800e-3131-894b-8b0320524851/1_org_zoom.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Boğazlı Kazak</h3><p class="fiyat">999 TL</p><button class="sepete-ekle-btn" data-id="58" data-isim="Kadın Boğazlı Kazak" data-fiyat="999">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="kadin" data-fiyat="1499"><span class="yeni-etiket">YENİ</span><img src="https://cdn.modamizbir.com/Uploads/UrunResimleri/buyuk/siyah-kemerli-bayan-deri-pantolon-46477-abb8.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Deri Pantolon</h3><p class="fiyat">1499 TL</p><button class="sepete-ekle-btn" data-id="60" data-isim="Kadın Deri Pantolon" data-fiyat="1499">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="1199"><span class="yeni-etiket">YENİ</span><img src="https://261239-lacostetr.akinoncloudcdn.com/products/2025/09/09/325524/ff482b9b-1087-4c81-bc1c-a7a1a93fed7a_cropCenter.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Chino Pantolon</h3><p class="fiyat">1199 TL</p><button class="sepete-ekle-btn" data-id="66" data-isim="Erkek Chino Pantolon" data-fiyat="1199">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="2499"><span class="yeni-etiket">YENİ</span><img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/ys/z/29/62df97b2-b41e-4cb2-8785-748b6d4d710a.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Deri Biker Ceket</h3><p class="fiyat">2499 TL</p><button class="sepete-ekle-btn" data-id="67" data-isim="Erkek Deri Ceket" data-fiyat="2499">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="849"><span class="yeni-etiket">YENİ</span><img src="https://img-lcwaikiki.mncdn.com/mnpadding/1020/1360/ffffff/mpsellerportal/v0/img_122735913v0_9d94dc10-acd5-4be7-bc83-e231904cca36.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Çizgili Kazak</h3><p class="fiyat">849 TL</p><button class="sepete-ekle-btn" data-id="68" data-isim="Erkek Çizgili Kazak" data-fiyat="849">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="erkek" data-fiyat="749"><span class="yeni-etiket">YENİ</span><img src="https://plescon.sm.mncdn.com/mnresize/1200/-/lescon/upload/urunler/25NTEL001142_227_4.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Eşofman Altı</h3><p class="fiyat">749 TL</p><button class="sepete-ekle-btn" data-id="70" data-isim="Erkek Eşofman Altı" data-fiyat="749">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="449"><span class="yeni-etiket">YENİ</span><img src="https://www.zeyderkids.com/wp-content/uploads/2023/12/erkek-cocuk-baskili-sweatshirt-1702910620905.jpeg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Baskılı Sweatshirt</h3><p class="fiyat">449 TL</p><button class="sepete-ekle-btn" data-id="71" data-isim="Çocuk Sweatshirt" data-fiyat="449">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="599"><span class="yeni-etiket">YENİ</span><img src="https://ktnimg2.mncdn.com/products/2024/03/05/2892409/5fa55d57-fe7a-444f-98a4-e05c4aeb5a34_size870x1142.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Desenli Gömlek</h3><p class="fiyat">599 TL</p><button class="sepete-ekle-btn" data-id="78" data-isim="Çocuk Gömlek" data-fiyat="599">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="cocuk" data-fiyat="499"><span class="yeni-etiket">YENİ</span><img src="https://farktorcdn.com/Library/Upl/5500207/Product/296132KWMVI-1.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Jean Etek</h3><p class="fiyat">499 TL</p><button class="sepete-ekle-btn" data-id="79" data-isim="Çocuk Etek" data-fiyat="499">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="699"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/72015/uploads/urunresimleri/buyuk/ee-198-erkek-deri-eldiven-5a88-4.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Deri Eldiven</h3><p class="fiyat">699 TL</p><button class="sepete-ekle-btn" data-id="82" data-isim="Deri Eldiven" data-fiyat="699">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="399"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/59257/uploads/urunresimleri/buyuk/etnik-desenli-sal-haki-31-45d.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Desenli Şal</h3><p class="fiyat">399 TL</p><button class="sepete-ekle-btn" data-id="86" data-isim="Desenli Şal" data-fiyat="399">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="aksesuar" data-fiyat="249"><span class="yeni-etiket">YENİ</span><img src="https://kozenbijoux.com/wp-content/uploads/2025/06/31f4f0e915a64941a3f2273f5a5a7ae4.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Çelik Bileklik</h3><p class="fiyat">249 TL</p><button class="sepete-ekle-btn" data-id="89" data-isim="Çelik Bileklik" data-fiyat="249">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="1799"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=1080,quality=99,format=webp/41550/uploads/urunresimleri/buyuk/hakiki-deri-siyah-bagciksiz-suet-erkek-687c9a.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Bağcıksız Loafer</h3><p class="fiyat">1799 TL</p><button class="sepete-ekle-btn" data-id="93" data-isim="Bağcıksız Loafer" data-fiyat="1799">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="399"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=-,quality=85/72015/uploads/urunresimleri/buyuk/kadin-siyah-ev-terligi-2d1-42.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Ev Terliği</h3><p class="fiyat">399 TL</p><button class="sepete-ekle-btn" data-id="99" data-isim="Ev Terliği" data-fiyat="399">Sepete Ekle</button></div></div>
+                    <div class="urun-kart filter-item" data-kategori="ayakkabi" data-fiyat="2599"><span class="yeni-etiket">YENİ</span><img src="https://static.ticimax.cloud/cdn-cgi/image/width=0,quality=0/36929/uploads/urunresimleri/buyuk/adidas-dame-x-j-unisex-basketbol-ayakk-a4c889.jpg" class="urun-gorsel-img"><div class="urun-kart-icerik"><h3>Basketbol Ayakkabısı</h3><p class="fiyat">2599 TL</p><button class="sepete-ekle-btn" data-id="100" data-isim="Basketbol Ayakkabısı" data-fiyat="2599">Sepete Ekle</button></div></div>
+                </div>
+                <p id="hata-mesaji" style="display: none; text-align: center; color: red; margin-top: 20px; font-weight: bold; font-size: 18px;">Ürün bulunamadı.</p>
+            </section>
+        </div>
+    </main>
+    <script src="js/script.js"></script>
+    <script>
+        function sepetiHoverDoldur() {
+            const sepet = JSON.parse(localStorage.getItem('mavi_sepet')) || [];
+            const kutu = document.getElementById('sepetHoverPencerem');
+            if(!kutu) return;
+            if(sepet.length === 0) {
+                kutu.innerHTML = '<p style="padding:20px; margin:0; text-align:center; color:#777; font-size:13px;">Sepetiniz boş.</p>';
+            } else {
+                let html = '<div style="max-height:200px; overflow-y:auto; padding:5px; background: white;">';
+                let toplam = 0;
+                sepet.forEach(u => {
+                    toplam += u.fiyat;
+                    html += `<div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #f5f5f5; font-size:13px;"><span style="font-weight:500; color:#333;">${u.isim}</span><strong style="color:#0033a0;">${u.fiyat} TL</strong></div>`;
+                });
+                html += `</div><div style="padding:12px; background:#f9fbff; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:13px; font-weight:bold;">Toplam:</span><strong style="color:#cc0000; font-size:16px;">${toplam} TL</strong></div>`;
+                html += `<a href="sepetim.html" style="display:block; text-align:center; background:#0033a0; color:white; padding:10px; text-decoration:none; font-size:13px; font-weight:bold; text-transform:uppercase;">Sepete Git &rarr;</a>`;
+                kutu.innerHTML = html;
+            }
+        }
+        document.getElementById('sepet-link').parentElement.addEventListener('mouseenter', sepetiHoverDoldur);
+    </script>
+    <script>
+        // Sıralama Filtresi Mantığı
+        document.getElementById('sirala-select').addEventListener('change', function() {
+            let grid = document.querySelector('.urun-grid');
+            let items = Array.from(grid.querySelectorAll('.filter-item'));
+            let secim = this.value;
+
+            if (secim === "artan") {
+                items.sort((a, b) => parseInt(a.getAttribute('data-fiyat')) - parseInt(b.getAttribute('data-fiyat')));
+            } else if (secim === "azalan") {
+                items.sort((a, b) => parseInt(b.getAttribute('data-fiyat')) - parseInt(a.getAttribute('data-fiyat')));
+            } else if (secim === "a-z") {
+                items.sort((a, b) => a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText));
+            } else if (secim === "z-a") {
+                items.sort((a, b) => b.querySelector('h3').innerText.localeCompare(a.querySelector('h3').innerText));
+            } else {
+                // Yeni gelenler (orijinal haline data-id'ye göre dön)
+                items.sort((a, b) => parseInt(a.querySelector('.sepete-ekle-btn').getAttribute('data-id')) - parseInt(b.querySelector('.sepete-ekle-btn').getAttribute('data-id')));
+            }
+
+            // Sıralanmış HTML'i temizle ve yeniden ekle
+            grid.innerHTML = '';
+            items.forEach(item => grid.appendChild(item));
+        });
+    </script>
+    <script>
+        // Akordeon (Açılır/Kapanır) Filtre Animasyonu
+        document.querySelectorAll('.accordion-baslik').forEach(baslik => {
+            baslik.addEventListener('click', function() {
+                let icerik = this.nextElementSibling;
+                let arti = this.querySelector('.arti');
+                if (icerik.style.display === "none") {
+                    icerik.style.display = "block";
+                    arti.innerText = "-";
+                } else {
+                    icerik.style.display = "none";
+                    arti.innerText = "+";
+                }
+            });
+        });
+
+        // --- ÇİFT YÖNLÜ (DUAL) FİYAT SLIDER MANTIĞI ---
+        const minRange = document.getElementById('fiyat-min-range');
+        const maxRange = document.getElementById('fiyat-araligi'); 
+        const minInput = document.getElementById('fiyat-min-input');
+        const maxInput = document.getElementById('fiyat-max-input');
+        const trackRenk = document.getElementById('slider-track-renk');
+
+        function ciftSliderGuncelle() {
+            let minVal = parseInt(minRange.value);
+            let maxVal = parseInt(maxRange.value);
+
+            if (minVal > maxVal - 50) {
+                if(this === minRange) { minRange.value = maxVal - 50; minVal = maxVal - 50; }
+                else { maxRange.value = minVal + 50; maxVal = minVal + 50; }
+            }
+
+            minInput.value = minVal;
+            maxInput.value = maxVal;
+
+            let percent1 = (minVal / minRange.max) * 100;
+            let percent2 = (maxVal / maxRange.max) * 100;
+            trackRenk.style.left = percent1 + "%";
+            trackRenk.style.right = (100 - percent2) + "%";
+
+            gelismisFiltreyiAtesle();
+        }
+
+        minRange.addEventListener('input', ciftSliderGuncelle);
+        maxRange.addEventListener('input', ciftSliderGuncelle);
+
+        minInput.addEventListener('change', function() {
+            minRange.value = this.value;
+            ciftSliderGuncelle();
+        });
+        maxInput.addEventListener('change', function() {
+            maxRange.value = this.value;
+            ciftSliderGuncelle();
+        });
+
+        function gelismisFiltreyiAtesle() {
+            let seciliKategoriler = Array.from(document.querySelectorAll('input[data-tip="kategori"]:checked')).map(cb => cb.value);
+            let minF = parseInt(minInput.value) || 0;
+            let maxF = parseInt(maxInput.value) || 3000;
+            let aramaMetni = document.getElementById('aramaInput') ? document.getElementById('aramaInput').value.toLowerCase() : "";
+            
+            let gosterilenSayi = 0;
+            let urunler = document.querySelectorAll('.filter-item');
+
+            urunler.forEach(urun => {
+                let uKategori = urun.getAttribute('data-kategori');
+                let uFiyat = parseInt(urun.getAttribute('data-fiyat'));
+                let uIsim = urun.querySelector('h3').innerText.toLowerCase();
+
+                let kategoriUyar = seciliKategoriler.length === 0 || seciliKategoriler.includes(uKategori);
+                let fiyatUyar = uFiyat >= minF && uFiyat <= maxF;
+                let aramaUyar = uIsim.includes(aramaMetni);
+
+                if (kategoriUyar && fiyatUyar && aramaUyar) {
+                    urun.style.display = 'block';
+                    gosterilenSayi++;
+                } else {
+                    urun.style.display = 'none';
+                }
+            });
+
+            let hataMesaji = document.getElementById('hata-mesaji');
+            if(hataMesaji) {
+                hataMesaji.style.display = (gosterilenSayi === 0) ? 'block' : 'none';
+            }
+        }
+
+        document.querySelectorAll('.filtre-cb').forEach(cb => {
+            cb.addEventListener('change', gelismisFiltreyiAtesle);
+        });
+
+        setTimeout(ciftSliderGuncelle, 100);
+
+        const temizleBtn = document.getElementById('filtreleri-temizle-btn');
+        if (temizleBtn) {
+            temizleBtn.addEventListener('click', function() {
+                document.querySelectorAll('.filtre-cb').forEach(cb => {
+                    cb.checked = false;
+                });
+                minInput.value = 0;
+                maxInput.value = 3000;
+                minRange.value = 0;
+                maxRange.value = 3000;
+                ciftSliderGuncelle();
+                const siralaSelect = document.getElementById('sirala-select');
+                if (siralaSelect) {
+                    siralaSelect.value = 'yeni';
+                    siralaSelect.dispatchEvent(new Event('change'));
+                }
+                const aramaKutusu = document.getElementById('aramaInput');
+                if (aramaKutusu) aramaKutusu.value = '';
+                gelismisFiltreyiAtesle();
+            });
+        }
+    </script>
+    <script>
+        // --- AKILLI CİNSİYET ETİKETLEME MOTORU ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const urunKartlari = document.querySelectorAll('.urun-kart');
+            
+            urunKartlari.forEach(kart => {
+                const kategori = kart.getAttribute('data-kategori');
+                const isimAlani = kart.querySelector('h3');
+                const icerikAlani = kart.querySelector('.urun-kart-icerik');
+                
+                if (!isimAlani || !icerikAlani) return; 
+
+                const isim = isimAlani.innerText.toLowerCase();
+                let etiketMetni = "";
+                let etiketSinifi = "";
+
+                if (kategori === "kadin") {
+                    etiketMetni = "Kadın"; etiketSinifi = "etiket-kadin";
+                } else if (kategori === "erkek") {
+                    etiketMetni = "Erkek"; etiketSinifi = "etiket-erkek";
+                } else if (kategori === "cocuk") {
+                    if (isim.includes("elbise") || isim.includes("etek") || isim.includes("tayt") || isim.includes("hırka") || isim.includes("şort") || isim.includes("salopet")) {
+                        etiketMetni = "Kız Çocuk"; etiketSinifi = "etiket-kiz-cocuk";
+                    } else {
+                        etiketMetni = "Erkek Çocuk"; etiketSinifi = "etiket-erkek-cocuk";
+                    }
+                } else if (kategori === "aksesuar" || kategori === "ayakkabi") {
+                    if (isim.includes("topuklu") || isim.includes("sandalet") || isim.includes("çizme") || isim.includes("çanta") || isim.includes("şal") || isim.includes("dolgu")) {
+                        etiketMetni = "Kadın"; etiketSinifi = "etiket-kadin";
+                    } else if (isim.includes("kundura") || isim.includes("kravat") || isim.includes("kasket")) {
+                        etiketMetni = "Erkek"; etiketSinifi = "etiket-erkek";
+                    } else {
+                        etiketMetni = "Unisex"; etiketSinifi = "etiket-unisex";
+                    }
+                }
+
+                if (etiketMetni !== "" && !icerikAlani.querySelector('.cinsiyet-etiket')) {
+                    const etiketSpan = document.createElement('span');
+                    etiketSpan.className = `cinsiyet-etiket ${etiketSinifi}`;
+                    etiketSpan.innerText = etiketMetni;
+                    icerikAlani.insertBefore(etiketSpan, icerikAlani.firstChild);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2,6 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
     sepetGuncelle();
     kullaniciKontrol();
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const aranan = urlParams.get('ara');
+    const kategori = urlParams.get('kategori');
+
+    const aramaKutusu = document.getElementById('aramaInput');
+    if (aranan && aramaKutusu) {
+        aramaKutusu.value = aranan;
+    }
+
+    if (document.querySelector('.filtre-alani') && kategori) {
+        let cb = document.querySelector(`.filtre-cb[value="${kategori}"]`);
+        if (cb) cb.checked = true;
+    }
+
     const sepeteEkleButonlari = document.querySelectorAll('.sepete-ekle-btn');
     sepeteEkleButonlari.forEach(buton => {
         buton.addEventListener('click', (e) => {
@@ -21,57 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.pathname.includes('sepetim.html')) sepetSayfasiniDoldur();
     if (window.location.pathname.includes('odeme.html')) odemeSayfasiniDoldur();
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const aranan = urlParams.get('ara');
-    const kategori = urlParams.get('kategori');
-
-    if (document.querySelector('.filtre-alani')) {
-        const urunler = document.querySelectorAll('.filter-item');
-        if (kategori) {
-            let cb = document.querySelector(`.filtre-cb[value="${kategori}"]`);
-            if (cb) cb.checked = true;
-        }
-        
-        function urunleriFiltrele() {
-            let seciliKategoriler = Array.from(document.querySelectorAll('input[data-tip="kategori"]:checked')).map(cb => cb.value);
-            let maksFiyat = parseInt(document.getElementById('fiyat-araligi').value);
-            document.getElementById('fiyat-gosterge').innerText = maksFiyat;
-            
-            let aramaMetni = document.getElementById('aramaInput') ? document.getElementById('aramaInput').value.toLowerCase() : "";
-            if(aranan && aramaMetni === "") aramaMetni = aranan.toLowerCase();
-
-            let gosterilenSayi = 0;
-            urunler.forEach(urun => {
-                let uKategori = urun.getAttribute('data-kategori');
-                let uFiyat = parseInt(urun.getAttribute('data-fiyat'));
-                let uIsim = urun.querySelector('h3').innerText.toLowerCase();
-
-                let kategoriUyar = seciliKategoriler.length === 0 || seciliKategoriler.includes(uKategori);
-                let fiyatUyar = uFiyat <= maksFiyat;
-                let aramaUyar = uIsim.includes(aramaMetni);
-
-                if(kategoriUyar && fiyatUyar && aramaUyar) {
-                    urun.style.display = 'block';
-                    gosterilenSayi++;
-                } else {
-                    urun.style.display = 'none';
-                }
-            });
-            document.getElementById('hata-mesaji').style.display = (gosterilenSayi === 0) ? 'block' : 'none';
-        }
-
-        document.getElementById('fiyat-araligi').addEventListener('input', urunleriFiltrele);
-        document.querySelectorAll('.filtre-cb').forEach(cb => cb.addEventListener('change', urunleriFiltrele));
-        urunleriFiltrele();
+    if (document.querySelector('.filtre-alani') && aranan) {
+        setTimeout(() => {
+            if (typeof gelismisFiltreyiAtesle === 'function') {
+                gelismisFiltreyiAtesle();
+            }
+        }, 100);
     }
 });
 
 function urunAra() {
-    const kelime = document.getElementById('aramaInput').value;
-    if (window.location.pathname.includes('urunler.html')) {
-        document.getElementById('fiyat-araligi').dispatchEvent(new Event('input'));
+    const aramaKutusu = document.getElementById('aramaInput');
+    if (!aramaKutusu || aramaKutusu.value.trim() === "") return;
+    
+    const kelime = encodeURIComponent(aramaKutusu.value.trim());
+    
+    if (window.location.href.toLowerCase().includes('urunler')) {
+        if (typeof gelismisFiltreyiAtesle === 'function') {
+            gelismisFiltreyiAtesle();
+        }
     } else {
-        window.location.href = 'urunler.html?ara=' + kelime;
+        window.location.href = './urunler.html?ara=' + kelime;
     }
 }
 
@@ -86,10 +70,11 @@ function sepetSayfasiniDoldur() {
     const icerik = document.getElementById('sepet-icerik');
     const tutar = document.getElementById('toplam-tutar');
     let toplam = 0;
+    if (!icerik) return;
     icerik.innerHTML = '';
 
     if (sepet.length === 0) {
-        icerik.innerHTML = '<p style="color: #666;">Sepetinizde urun bulunmamaktadır.</p>';
+        icerik.innerHTML = '<p style="color: #666;">Sepetinizde ürün bulunmamaktadır.</p>';
     } else {
         sepet.forEach((u) => {
             toplam += u.fiyat;
@@ -104,10 +89,11 @@ function odemeSayfasiniDoldur() {
     const ozet = document.getElementById('odeme-siparis-ozeti');
     const odemeToplam = document.getElementById('odeme-toplam');
     let toplam = 0;
+    if (!ozet) return;
     ozet.innerHTML = '';
 
     if (sepet.length === 0) {
-        ozet.innerHTML = '<p>Sepetiniz boş. Lütfen urun ekleyin.</p>';
+        ozet.innerHTML = '<p>Sepetiniz boş. Lütfen ürün ekleyin.</p>';
         setTimeout(() => window.location.href = "urunler.html", 2000);
     } else {
         sepet.forEach((urun) => {
@@ -138,7 +124,7 @@ function sepetiOnayla() {
     if(JSON.parse(localStorage.getItem('mavi_sepet')||"[]").length > 0) {
         window.location.href = "odeme.html";
     } else {
-        alert("Sipariş verebilmek için sepetinize urun ekleyin."); 
+        alert("Sipariş verebilmek için sepetinize ürün ekleyin."); 
     }
 }
 

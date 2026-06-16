@@ -1,9 +1,7 @@
-/* --- GENEL SIFIRLAMA VE MAVİ TEMASI --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 body { padding-top: 20px; background-color: #fafafa; color: #222; display: flex; flex-direction: column; min-height: 100vh; }
 .ust-uyari { height: 20px; position: fixed; top: 0; left: 0; width: 100%; background-color: #000; color: white; text-align: center; font-size: 13px; line-height: 20px; z-index: 1000; letter-spacing: 0.5px; }
 
-/* --- HEADER & NAV --- */
 header { background-color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e0e0e0; position: sticky; top: 20px; z-index: 999; }
 header .logo { font-size: 28px; font-weight: 900; color: #0033a0; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
 header nav { display: flex; gap: 25px; align-items: center; }
@@ -12,27 +10,23 @@ header nav a:hover { color: #0033a0; }
 #sepet-link { background: #0033a0; color: white; border-radius: 2px; padding: 10px 15px; }
 #sepet-link:hover { background: #001f66; color: white; }
 
-/* --- AÇILIR MENÜ --- */
 .dropdown { position: relative; display: inline-block; }
 .dropdown-icerik { display: none; position: absolute; background-color: white; min-width: 220px; box-shadow: 0px 10px 25px rgba(0,0,0,0.08); z-index: 2000; border-radius: 2px; top: 100%; border: 1px solid #eee; overflow: hidden; }
 .dropdown-icerik a { color: #444; padding: 14px 20px; text-decoration: none; display: block; font-size: 13px; border-bottom: 1px solid #f5f5f5; text-transform: uppercase; font-weight: 600; }
 .dropdown-icerik a:hover { background-color: #f8f9fa; color: #0033a0; padding-left: 25px; }
 .dropdown:hover .dropdown-icerik { display: block; }
 
-/* --- HERO ALANI --- */
 .hero-alani { background-image: linear-gradient(rgba(0, 20, 60, 0.4), rgba(0, 20, 60, 0.6)), url('https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; color: white; padding: 120px 40px; text-align: center; display: flex; align-items: center; justify-content: center; height: 75vh; }
 .hero-icerik h1 { font-size: 54px; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
 .hero-icerik p { font-size: 20px; font-weight: 400; margin-bottom: 40px; }
 .btn-hero { display: inline-block; background-color: white; color: #0033a0; padding: 16px 40px; text-decoration: none; font-weight: 800; border-radius: 2px; font-size: 16px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
 .btn-hero:hover { background-color: #0033a0; color: white; }
 
-/* --- PREMIUM KAMPANYA BANNER --- */
 .kampanya-alani { background: linear-gradient(135deg, #001f66 0%, #0033a0 50%, #0044cc 100%); color: white; padding: 45px 50px; margin: 50px auto; max-width: 1200px; width: 95%; border-radius: 2px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0, 51, 160, 0.2); border-left: 8px solid #87ceeb; position: relative; overflow: hidden; }
 .kampanya-alani h2 { font-size: 32px; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
 .kampanya-btn { background-color: #fff; color: #0033a0; padding: 16px 35px; font-size: 16px; font-weight: 800; text-decoration: none; border-radius: 2px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 .kampanya-btn:hover { background-color: #87ceeb; color: #001f66; transform: translateY(-3px); }
 
-/* --- KATEGORİ VİTRİNİ --- */
 .kategori-vitrin { margin: 50px auto; max-width: 1200px; width: 95%; }
 .vitrin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .vitrin-kutu { height: 450px; background-size: cover; background-position: center; border-radius: 2px; display: flex; align-items: flex-end; padding: 35px; text-decoration: none; transition: all 0.4s ease; position: relative; overflow: hidden; }
@@ -41,7 +35,6 @@ header nav a:hover { color: #0033a0; }
 .vitrin-kutu:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
 .vitrin-kutu h3 { color: white; font-size: 28px; font-weight: 800; z-index: 2; text-transform: uppercase; letter-spacing: 1px; }
 
-/* --- ÜRÜN KARTLARI & SLIDER --- */
 .kategori-slider-alani { max-width: 1200px; margin: 0 auto 70px; width: 95%; }
 .slider-baslik-satiri { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #0033a0; padding-bottom: 12px; }
 .slider-baslik-satiri h2 { color: #0033a0; font-size: 26px; text-transform: uppercase; font-weight: 900; }
@@ -61,14 +54,12 @@ header nav a:hover { color: #0033a0; }
 .sepete-ekle-btn { width: 100%; padding: 14px; background-color: #0033a0; color: white; border: none; border-radius: 2px; cursor: pointer; font-size: 14px; font-weight: 800; text-transform: uppercase; transition: 0.3s; letter-spacing: 0.5px; }
 .sepete-ekle-btn:hover { background-color: #001f66; }
 
-/* --- ALL BLUE ALANI --- */
 .all-blue-alani { background-color: #f4f8ff; padding: 70px 40px; text-align: center; margin: 70px auto; max-width: 1200px; border-top: 4px solid #0033a0; border-bottom: 4px solid #0033a0; }
 .all-blue-icerik h2 { color: #0033a0; font-size: 32px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
 .all-blue-icerik p { color: #555; font-size: 16px; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.8; }
 .all-blue-btn { border: 2px solid #0033a0; background: transparent; color: #0033a0; padding: 14px 35px; text-decoration: none; font-weight: 800; border-radius: 2px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
 .all-blue-btn:hover { background-color: #0033a0; color: white; }
 
-/* --- FOOTER --- */
 .kapsamli-footer { background-color: #0a192f; color: white; padding: 70px 40px 30px; margin-top: auto; border-top: 5px solid #0033a0; }
 .footer-icerik { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 50px; }
 .footer-sutun h3 { font-size: 16px; font-weight: 900; margin-bottom: 25px; color: #87ceeb; text-transform: uppercase; letter-spacing: 1px; }
@@ -78,13 +69,11 @@ header nav a:hover { color: #0033a0; }
 .footer-sutun ul li a:hover { color: #fff; padding-left: 8px; }
 .footer-alt { text-align: center; margin-top: 30px; font-size: 13px; color: #777; }
 
-/* --- KAYDIRMA BUTONLARI --- */
 .kaydir-btn { background-color: white; border: 1px solid #ddd; border-radius: 50%; width: 45px; height: 45px; font-size: 20px; color: #0033a0; cursor: pointer; position: absolute; z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
 .kaydir-btn:hover { background-color: #0033a0; color: white; border-color: #0033a0; }
 .kaydir-btn.sol { left: -22px; }
 .kaydir-btn.sag { right: -22px; }
 
-/* --- FİLTRE VE DİĞER SAYFALAR --- */
 main { max-width: 1200px; margin: 50px auto; width: 95%; }
 .urunler-kapsayici { display: flex; gap: 40px; align-items: flex-start; }
 .filtre-alani { flex: 0 0 260px; background: white; padding: 30px; border: 1px solid #eaeaea; border-radius: 2px; position: sticky; top: 110px; }
@@ -94,14 +83,13 @@ main { max-width: 1200px; margin: 50px auto; width: 95%; }
 .urun-listesi-alani { flex: 1; }
 .urun-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
 
-/* --- ÜYELİK & İLETİŞİM FORMLARI --- */
 .uyelik-kapsayici { max-width: 450px; margin: 80px auto; background: white; padding: 50px; border-radius: 2px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border: 1px solid #eaeaea; }
 .uyelik-kapsayici h2 { color: #0033a0; text-align: center; margin-bottom: 35px; font-size: 26px; text-transform: uppercase; font-weight: 900; letter-spacing: 1px; }
 input[type="text"], input[type="email"], input[type="password"], textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 2px; font-size: 14px; transition: 0.3s; background-color: #fafafa; }
 input:focus, textarea:focus { border-color: #0033a0; outline: none; background-color: #fff; box-shadow: 0 0 0 3px rgba(0,51,160,0.1); }
 .uyelik-btn { width: 100%; padding: 16px; background-color: #0033a0; color: white; border: none; border-radius: 2px; font-size: 15px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; letter-spacing: 1px; }
 .uyelik-btn:hover { background-color: #001f66; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,51,160,0.2); }
-/* --- YENİ MODERN ARAMA ÇUBUĞU --- */
+
 .arama-kapsayici { 
     display: flex; 
     align-items: center; 
@@ -139,7 +127,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .arama-kapsayici button:hover { 
     background: #001f66; 
 }
-/* --- YENİ PREMIUM DOKUNUŞLAR --- */
+
 .arama-kapsayici { 
     display: flex; 
     align-items: center; 
@@ -159,7 +147,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .arama-kapsayici input { border: none !important; padding: 10px 15px !important; background: transparent !important; font-size: 14px; width: 220px; }
 .arama-kapsayici button { background: transparent !important; color: #0033a0 !important; border: none !important; padding: 10px 15px !important; font-weight: 700 !important; }
 
-/* Yatay Kaplayan Yeni Vitrin Banner Modeli */
 .vitrin-kutu-yeni {
     width: 100%;
     height: 300px;
@@ -177,7 +164,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .vitrin-kutu-yeni h3 { color: white; font-size: 36px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
 .vitrin-kutu-yeni:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,51,160,0.15); }
 
-/* Sepet Hover Özeti Penceresi */
 .sepet-dropdown-kapsayici { position: relative; display: inline-block; }
 .sepet-ozet-pencere {
     display: none;
@@ -195,7 +181,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 }
 .sepet-dropdown-kapsayici:hover .sepet-ozet-pencere { display: block; }
 
-/* Orijinal Mavi Tarzı Premium Ürün Kartları */
 .urun-listesi-alani .urun-kart {
     background: #fff;
     border: 1px solid #f0f0f4 !important;
@@ -209,7 +194,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .urun-listesi-alani .urun-kart h3 { font-size: 15px; color: #333; font-weight: 600; margin-top: 12px; }
 .urun-listesi-alani .fiyat { font-size: 18px; font-weight: 800; color: #0033a0; margin: 8px 0; }
 
-/* --- ANA SAYFA FULL YATAY (EDGE-TO-EDGE) VİTRİNLER --- */
 .tam-ekran-vitrin-alani {
     width: 100%;
     margin: 0;
@@ -222,7 +206,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     max-width: 100%;
     border-radius: 0;
     margin-bottom: 0;
-    height: 70vh; /* Ekranın büyük kısmını kaplasın */
+    height: 70vh;
     min-height: 500px;
     justify-content: center;
     text-align: center;
@@ -234,25 +218,24 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     margin-right: -50vw;
 }
 .vitrin-kutu-yeni.tam-ekran h3 {
-    font-size: 5vw; /* Ekrana göre büyüyüp küçülen dev yazı */
+    font-size: 5vw;
     letter-spacing: 4px;
 }
 
-/* --- ÜRÜNLER SAYFASI (1. SS ORİJİNAL MAVİ GÖRÜNÜMÜ) --- */
 .filtre-alani {
     border: none;
-    border-right: 1px solid #e0e0e0; /* SS'teki gibi sadece sağ çizgi */
+    border-right: 1px solid #e0e0e0;
     padding-right: 30px;
     box-shadow: none;
 }
 .urun-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3'lü tam düzen */
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 .urun-listesi-alani .urun-kart {
     position: relative;
-    background: #e6e6e6; /* SS'teki soft stüdyo grisi arka plan */
+    background: #e6e6e6;
     border: none !important;
     border-radius: 4px;
     padding: 0;
@@ -260,7 +243,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 }
 .urun-listesi-alani .urun-kart:hover {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transform: none; /* SS'teki gibi stabil dursun */
+    transform: none;
 }
 .urun-listesi-alani .urun-gorsel-img {
     height: 450px;
@@ -284,7 +267,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     letter-spacing: 1px;
     z-index: 10;
 }
-/* --- ÖNE ÇIKANLAR TAM EKRAN SLIDER --- */
+
 .tam-ekran-slider-alani {
     width: 100vw;
     position: relative;
@@ -308,7 +291,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     padding: 0 20px;
 }
 
-/* --- MODERN SIRALAMA FİLTRESİ --- */
 .modern-select {
     appearance: none;
     width: 100%;
@@ -329,7 +311,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     border-color: #0033a0;
     box-shadow: 0 0 0 3px rgba(0,51,160,0.1);
 }
-/* --- ALL BLUE TAM EKRAN (YENİ) --- */
+
 .all-blue-tam-ekran {
     width: 100vw;
     position: relative;
@@ -341,7 +323,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     text-align: center;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Orijinal sitedeki gibi premium kaydırma efekti */
+    background-attachment: fixed;
     border: none;
     display: flex;
     flex-direction: column;
@@ -351,7 +333,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     margin-top: 60px;
     margin-bottom: 60px;
 }
-/* --- MODERN FİLTRE & AKORDEON (AÇILIR-KAPANIR) --- */
+
 .modern-filtre {
     background: #fff;
     border: 1px solid #eaeaea;
@@ -394,7 +376,6 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     background: #fff;
 }
 
-/* Özel Checkbox (Kutucuk) Tasarımı */
 .custom-cb {
     display: block;
     position: relative;
@@ -413,7 +394,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .checkmark:after { content: ""; position: absolute; display: none; }
 .custom-cb input:checked ~ .checkmark:after { display: block; }
 .custom-cb .checkmark:after { left: 5px; top: 1px; width: 5px; height: 10px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
-/* --- VS CODE UYUMLULUK UYARISI ÇÖZÜMÜ (STANDARTLAŞTIRMA) --- */
+
 .fiyat-girisleri input { 
     appearance: textfield; 
 }
@@ -427,7 +408,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
 .cift-slider-kapsayici input[type="range"]::-webkit-slider-thumb { 
     appearance: none; 
 }
-/* --- KATEGORİ / CİNSİYET BİLGİ ETİKETLERİ --- */
+
 .cinsiyet-etiket {
     display: inline-block;
     font-size: 11px;
@@ -438,7 +419,7 @@ input:focus, textarea:focus { border-color: #0033a0; outline: none; background-c
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-/* Her kategoriye özel şık soft renkler */
+
 .etiket-kadin { background: #fdf0f5; color: #d63384; border: 1px solid #f8d7da; }
 .etiket-erkek { background: #eef2f7; color: #0033a0; border: 1px solid #cce5ff; }
 .etiket-kiz-cocuk { background: #fff5f8; color: #e83e8c; border: 1px solid #f5c6cb; }

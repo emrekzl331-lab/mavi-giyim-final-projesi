@@ -159,7 +159,6 @@
         document.getElementById('sepet-link').parentElement.addEventListener('mouseenter', sepetiHoverDoldur);
     </script>
     <script>
-        // Sıralama Filtresi Mantığı
         document.getElementById('sirala-select').addEventListener('change', function() {
             let grid = document.querySelector('.urun-grid');
             let items = Array.from(grid.querySelectorAll('.filter-item'));
@@ -174,17 +173,14 @@
             } else if (secim === "z-a") {
                 items.sort((a, b) => b.querySelector('h3').innerText.localeCompare(a.querySelector('h3').innerText));
             } else {
-                // Yeni gelenler (orijinal haline data-id'ye göre dön)
                 items.sort((a, b) => parseInt(a.querySelector('.sepete-ekle-btn').getAttribute('data-id')) - parseInt(b.querySelector('.sepete-ekle-btn').getAttribute('data-id')));
             }
 
-            // Sıralanmış HTML'i temizle ve yeniden ekle
             grid.innerHTML = '';
             items.forEach(item => grid.appendChild(item));
         });
     </script>
     <script>
-        // Akordeon (Açılır/Kapanır) Filtre Animasyonu
         document.querySelectorAll('.accordion-baslik').forEach(baslik => {
             baslik.addEventListener('click', function() {
                 let icerik = this.nextElementSibling;
@@ -199,7 +195,6 @@
             });
         });
 
-        // --- ÇİFT YÖNLÜ (DUAL) FİYAT SLIDER MANTIĞI ---
         const minRange = document.getElementById('fiyat-min-range');
         const maxRange = document.getElementById('fiyat-araligi'); 
         const minInput = document.getElementById('fiyat-min-input');
@@ -299,7 +294,6 @@
         }
     </script>
     <script>
-        // --- AKILLI CİNSİYET ETİKETLEME MOTORU ---
         document.addEventListener("DOMContentLoaded", () => {
             const urunKartlari = document.querySelectorAll('.urun-kart');
             

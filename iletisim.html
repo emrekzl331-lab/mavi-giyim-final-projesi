@@ -94,20 +94,16 @@
 
     <script src="script.js"></script> 
     <script>
-        // --- ÇALIŞAN İLETİŞİM FORMU MANTIĞI ---
         document.getElementById('bizeUlasinFormu').addEventListener('submit', function(e) {
-            e.preventDefault(); // Sayfanın yenilenmesini engeller
+            e.preventDefault(); 
             
             const musteriIsmi = document.getElementById('iletisimAd').value;
             
-            // Başarılı gönderim mesajı
             alert("Teşekkürler " + musteriIsmi + "! Mesajın başarıyla alındı. En kısa sürede sana dönüş yapacağız.");
             
-            // Formu temizle
             this.reset();
         });
 
-        // --- SEPET HOVER MANTIĞI ---
         function sepetiHoverDoldur() {
             const sepet = JSON.parse(localStorage.getItem('mavi_sepet')) || [];
             const kutu = document.getElementById('sepetHoverPencerem');
